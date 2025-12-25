@@ -11,7 +11,7 @@ const adminMiddleware =async (req,res,next)=>{
             })
         }
 
-        const decodeId = jwt.verify(token,process.env.JWT_SECRET);
+        const decodeId = jwt.verify(token,process.env.JWT_ADMIN_SECRET);
 
         const admin = await adminModel.findById(decodeId.id);
 
