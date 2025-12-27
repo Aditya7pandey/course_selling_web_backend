@@ -11,6 +11,6 @@ router.post('/create-course',adminMiddleware,courseController.create);
 
 router.get('/delete-course/:courseId',adminMiddleware,courseController.deleteCourse);
 
-router.post('/update-course/:courseId',adminMiddleware,courseController.updateCourse)
+router.put('/update-course/:courseId',adminMiddleware,courseController.updateCourse)
 
 module.exports = router;

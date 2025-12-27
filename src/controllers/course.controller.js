@@ -93,11 +93,28 @@ const updateCourse = async(req,res) =>{
             })
         }
 
-        await courseModel.findByIdAndUpdate(courseId,{
+        // await courseModel.findByIdAndUpdate(courseId,{
+        //     courseName,
+        //     price,
+        //     description
+        // },{new:true})
+
+        const checkPos = await courseModel.find({_id:courseId,adminId:adminId})
+
+        if(checkPos.length === 0){
+            return res.json({
+                message:"Invalid request"
+            })
+        }
+
+        await courseModel.updateOne({
+            _id:courseId,
+            adminId:adminId
+        },{
             courseName,
             price,
             description
-        },{new:true})
+        })
 
         return res.json({
             message:"course updated",
